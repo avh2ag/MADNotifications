@@ -6,7 +6,7 @@ import {
   OktaAuthGuard
 } from '@okta/okta-angular';
 import { TextViewComponent } from './text-view/text-view.component';
-
+import { environment } from '../environments/environment';
 
 export function onAuthRequired({ oktaAuth, router }) {
   // Redirect the user to your custom login page
@@ -44,7 +44,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes, { useHash: environment.isUseHash })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
