@@ -5,6 +5,7 @@ import {
   OktaCallbackComponent,
   OktaAuthGuard
 } from '@okta/okta-angular';
+import { TextViewComponent } from './text-view/text-view.component';
 
 
 export function onAuthRequired({ oktaAuth, router }) {
@@ -14,6 +15,11 @@ export function onAuthRequired({ oktaAuth, router }) {
 
 
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'v1',
+    pathMatch: 'full'
+  },
   {
     path: 'login',
     component: LoginComponent
@@ -29,7 +35,10 @@ const routes: Routes = [
       onAuthRequired
     },
     children: [
-
+      {
+        path: '',
+        component: TextViewComponent
+      }
     ]
   }
 ];
