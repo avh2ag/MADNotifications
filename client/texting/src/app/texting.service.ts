@@ -42,8 +42,20 @@ export class TextingService {
     } else {
       // add the +1 to the phoneNumber
       const formattedPhoneNumber = `+1${phoneNumber}`;
-      // send request
-      this.sendStatus(phoneNumber, 'Error');
+      const params = {
+        receiver: formattedPhoneNumber,
+        sender: 'MAD DMV',
+        message: message
+      };
+      // can we edit this out?
+      const endpoint = 'https://3d256xe0ik.execute-api.us-east-1.amazonaws.com/prod/sendSMS';
+      this.http.post(endpoint, params).subscribe(
+        (success) => {
+          this.sendStatus(phoneNumber, 'Send');
+        }, (error) => {
+          this.sendStatus(phoneNumber, 'Error Sending Message');
+        }
+      );
     }
   }
 
