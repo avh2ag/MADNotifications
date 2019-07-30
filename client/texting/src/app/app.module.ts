@@ -13,6 +13,7 @@ import {
 } from '@okta/okta-angular';
 
 import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { environment } from '../environments/environment';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule,
     OktaAuthModule.initAuth(environment.oktaConfig)
   ],

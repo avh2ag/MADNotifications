@@ -9,7 +9,7 @@
       <label for="message">Message</label>
       <textarea formControlName="message" required class="form-control" id="message" placeholder="Message to send"></textarea>
     </div>
-
+    <button type="reset" class="btn btn-secondary">Reset</button>
     <button type="submit" class="btn btn-primary" [disabled]="!textForm.valid">Submit</button>
   </form>
 </div>
