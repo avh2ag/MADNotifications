@@ -51,7 +51,7 @@ export class TextingService {
       const endpoint = 'https://3d256xe0ik.execute-api.us-east-1.amazonaws.com/prod/sendSMS';
       this.http.post(endpoint, params).subscribe(
         (success) => {
-          this.sendStatus(phoneNumber, 'Send');
+          this.sendStatus(phoneNumber, 'Sent');
         }, (error) => {
           this.sendStatus(phoneNumber, 'Error Sending Message');
         }

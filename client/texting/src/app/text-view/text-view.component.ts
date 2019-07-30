@@ -57,7 +57,6 @@ export class TextViewComponent implements OnInit, OnDestroy {
   }
 
   public sendMessages() {
-    console.log('sending messages');
     if (this.textForm.valid) {
       this.isSubmitted = true;
       this.resetStatuses();

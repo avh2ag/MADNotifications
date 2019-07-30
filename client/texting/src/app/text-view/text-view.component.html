@@ -18,7 +18,7 @@
   <h3>Messages</h3>
   <ul *ngIf="numbersList.length > 0">
       <ng-container *ngFor="let phoneNumber of numbersList; trackBy: $index">
-        <li>{{ phoneNumber }} - <span class="text-warning">{{ messageStatuses[phoneNumber] }}</span></li>
+        <li>{{ phoneNumber }} - <span [class]="messageStatuses[phoneNumber] | statusPipe">{{ messageStatuses[phoneNumber] }}</span></li>
       </ng-container>
   </ul>
   <p class="text-danger" *ngIf="numbersList.length === 0">No valid phone numbers entered.</p>

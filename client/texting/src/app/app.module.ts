@@ -14,13 +14,15 @@ import {
 
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+import { StatusPipePipe } from './status-pipe.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     TextViewComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    StatusPipePipe
   ],
   imports: [
     BrowserModule,
