@@ -1,0 +1,37 @@
+<script src="https://ok1static.oktacdn.com/assets/js/sdk/okta-auth-js/2.0.1/okta-auth-js.min.js" type="text/javascript"></script>
+<script>
+    // OIDC variables need to copy the same as environment.prod.ts
+    var issuer = 'https://dev-818614.okta.com/oauth2/default/';
+    var clientId = '0oa10v3anoMc1x160357';
+    var redirectUri = 'https://alexharasty.io/mad-texts/callback.html';
+    var redirectAfterSuccess = 'https://alexharasty.io/mad-texts/#/v1';
+    
+    // build an auth client
+    var client = new OktaAuth({
+        url: 'https://dev-818614.okta.com',
+        clientId: clientId,
+        issuer: issuer,
+        redirectUri: redirectUri
+    });
+    
+    // parse tokens from the url
+    client.token.parseFromUrl()
+    .then(function(tokens) {
+    
+        // add tokens to the tokenManager
+        for (var t = 0; t < tokens.length; t++) {
+        var token = tokens[t];
+        if (token.idToken) {
+            client.tokenManager.add('idToken', token);
+        } else if (token.accessToken) {
+            client.tokenManager.add('accessToken', token);
+        }
+        }
+    
+        // redirect when finished
+        window.location = redirectAfterSuccess;
+    })
+    .catch(function(err) {
+        // handle the error
+    });
+</script>

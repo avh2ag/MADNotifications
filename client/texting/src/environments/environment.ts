@@ -7,7 +7,7 @@ export const environment = {
   oktaUrl: 'https://dev-818614.okta.com',
   oktaConfig: {
     issuer: `https://dev-818614.okta.com/oauth2/default`,
-    redirectUri: `http://localhost:4200/implicit/callback`,
+    redirectUri: `http://localhost:4200/#/implicit/callback`,
     clientId: '0oari98stVtwQkCah356'
   }
 };
