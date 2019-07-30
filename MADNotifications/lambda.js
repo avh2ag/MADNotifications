@@ -26,6 +26,7 @@ exports.handler = function (event, context, callback) {
 	}).promise()
 		.then(data => {
 			console.log("Sent message to", receiver);
+
 			callback(null, data);
 		})
 		.catch(err => {

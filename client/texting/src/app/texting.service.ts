@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { environment } from '../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -41,15 +43,19 @@ export class TextingService {
       return;
     } else {
       // add the +1 to the phoneNumber
-      const formattedPhoneNumber = `+1${phoneNumber}`;
+      const formattedPhoneNumber = `${phoneNumber}`;
       const params = {
         receiver: formattedPhoneNumber,
-        sender: 'MAD DMV',
+        sender: 'MadDMV',
         message: message
       };
       // can we edit this out?
-      const endpoint = 'https://3d256xe0ik.execute-api.us-east-1.amazonaws.com/prod/sendSMS';
-      this.http.post(endpoint, params).subscribe(
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'x-api-key': environment.apiKey
+        })
+      };
+      this.http.post(environment.apiEndpoint, JSON.stringify(params), httpOptions).subscribe(
         (success) => {
           this.sendStatus(phoneNumber, 'Sent');
         }, (error) => {
